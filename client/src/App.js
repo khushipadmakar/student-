@@ -1,34 +1,32 @@
-import logo from './logo.svg';
+
 import './App.css';
-import {useState,useEffect} from 'react'
-import axios from 'axios'
+import { useState } from 'react'
+import Navbar from './Components/Navbar'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Predict from './Components/Predict'
+import Login from './Components/Login'
+import Signup from './Components/Signup'
+
+
 
 function App() {
-  const fetchAPI = async() => {
-    const response  = await axios.get("http://localhost:8080/api/users");
-    console.log(response.data.users)
-  };
-  useEffect(()=>{
-    fetchAPI()
-  },[])
+  const [token, setToken] = useState(localStorage.getItem('token'));
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <div className="p-4">
+        <Routes>
+          {!token ? (<>
+            <Route path="/login" element={<Login setToken={setToken}/>} />
+            <Route path = "/signup" element = {<Signup />}/>
+          </>
+          ) : (
+            <Route path="/predict" element={<Predict />} />
+          )}
+        </Routes>
+      </div>
+    </Router>
   );
 }
-
 export default App;
