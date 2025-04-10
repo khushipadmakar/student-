@@ -1,0 +1,84 @@
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+/* General Styles */
+.predict-container {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  padding: 20px;
+  max-width: 500px;
+  margin: auto;
+  background: #f9f9f9;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Title */
+.predict-container h2 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.predict-container p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* Form Styles */
+.predict-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.predict-form label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.predict-form input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.predict-btn {
+  background: #4facfe;
+  color: white;
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.predict-btn:hover {
+  background: #00c6ff;
+  transform: scale(1.05);
+}
+
+.predict-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Prediction Result */
+.prediction-result {
+  margin-top: 20px;
+  background: #ff7eb3;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.prediction-result h3 {
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+}
