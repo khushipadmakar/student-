@@ -38,16 +38,18 @@ def signup():
     
 
     hashed_password = generate_password_hash(password)
-    new_user = User(username=username, password=password)
+    new_user = User(username=username, password=hashed_password)
     db.session.add(new_user)
     db.session.commit()
 
 
     return jsonify({'message': 'User created successfully'}), 201
 
-@app.route('/api/login', methods=['POST','GET'])
+@app.route('/api/login', methods=['POST'])
 def login():
     data = request.get_json()
+    if not data:
+        return jsonify({'message': 'No input data provided'}), 400
     username = data.get('username')
     password = data.get('password')
 
@@ -61,6 +63,7 @@ def login():
         access_token = create_access_token(identity=user.id)
         return jsonify({'token': access_token, 'message': 'Login successful'}), 200
     return jsonify({'message': 'Invalid credentials'}), 401
+
 
 num_rows = 500
 np.random.seed(42)
